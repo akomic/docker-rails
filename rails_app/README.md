@@ -25,10 +25,10 @@ Edit Dockerfile to reflect your setup.
 Building testapp image
 ----------------------
 
-`docker build -t testapp .`
+`$ docker build -t testapp .`
 
 
 Running newly created container
 ------------------------------------
 
-`docker run -d -P -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle testapp`
+`$ docker run -d -P -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle testapp`
