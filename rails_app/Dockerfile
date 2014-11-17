@@ -25,5 +25,7 @@ USER ${APP_USER}
 
 WORKDIR ${APP_WD}
 
+ADD supervisor-app.conf ${APP_WD}/supervisor-app.conf
+
 EXPOSE ${APP_PORT}
 CMD ["supervisord", "-n", "-c", "supervisor-app.conf"]
