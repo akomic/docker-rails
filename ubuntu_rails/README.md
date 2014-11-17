@@ -1,6 +1,8 @@
 ubuntu_rails
 ------------
 
+Creating basic ubuntu image with tools and packages needed to run rails application.
+
 ### Edit Dockerfile
 
 and specify default user under which application is going to run

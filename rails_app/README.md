@@ -36,18 +36,23 @@ Bundling
 To bundle we are going to run separate container
 
 ```
-$ docker run -t -i -P -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle --name testappBundler testapp /bin/bash
+$ docker run -t -i -P \
+  -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle \
+  --name testappBundler testapp /bin/bash
 ```
 
 ```
 ak@16d2c0b666a3:~/testapp$ bundle install --path /home/ak/bundle/
+ak@16d2c0b666a3:~/testapp$ exit
 ```
 
 Running newly created container with unicorn
 --------------------------------------------
 
 ```
-docker run -d -p 14401:14401 -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle --name testapp testapp
+$ docker run -d -p 14401:14401 \
+  -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle \
+  --name testapp testapp
 ```
 
 ```
