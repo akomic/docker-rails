@@ -10,3 +10,8 @@ rails_app
 ---------
 
 Dockerfile for final image creation and deploy of rails application
+
+testapp
+-------
+
+Example rails app
