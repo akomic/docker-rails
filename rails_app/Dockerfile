@@ -21,12 +21,9 @@ ENV APP_USER ak
 ENV APP_WD /home/${APP_USER}/${APP}
 ENV APP_PORT 14401
 
-# Setup supervisor
-ADD supervisor-app.conf /etc/supervisor/conf.d/supervisor-${APP}.conf
-
 USER ${APP_USER}
 
 WORKDIR ${APP_WD}
 
 EXPOSE ${APP_PORT}
-CMD ["supervisord", "-n"]
+CMD ["supervisord", "-n", "-c", "supervisor-app.conf"]
