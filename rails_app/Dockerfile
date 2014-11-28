@@ -21,6 +21,10 @@ ENV APP_USER ak
 ENV APP_WD /home/${APP_USER}/${APP}
 ENV APP_PORT 14401
 
+# Adding user to sudo group and setting password to 'mypass' CHANGE IT!
+RUN usermod -a -G sudo ${APP_USER}
+RUN echo "${APP_USER}:mypass" |chpasswd
+
 USER ${APP_USER}
 
 WORKDIR ${APP_WD}
