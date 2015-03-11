@@ -20,6 +20,6 @@ ENV USER ak
 ENV UID 1000
 
 RUN apt-get update
-RUN apt-get install -y ruby ruby-dev make libsqlite3-dev g++ supervisor
+RUN apt-get install -y ruby ruby-dev make libsqlite3-dev g++ supervisor zlib1g-dev patch libmysqlclient-dev
 RUN gem install bundler rails
 RUN useradd -d /home/${USER} -s /bin/bash -u ${UID} -m ${USER}

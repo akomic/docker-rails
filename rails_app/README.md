@@ -5,12 +5,12 @@ Running Docker container with Rails, Unicorn and supervisor
 -----------------------------------------------------------
 
 Application is located on the host and mounted as volume in container.
-This way was we can respawn as many containers as we like.
+This way we can respawn as many containers as we like.
 It also allows us to make changes to the code without the need to enter or recreate
 container.
 
 Bundle of gems is installed in separate directory and mounted as volume.
-It allows us to reuse the same bundle directory for multiple applications and save space.
+It allows you to reuse the same bundle directory for multiple applications and save space and time.
 
 ubuntu_rails image is required
 ------------------------------
@@ -51,6 +51,7 @@ Running newly created container with unicorn
 
 ```
 $ docker run -d -p 14401:14401 \
+  -v /dev/log:/dev/log \
   -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle \
   --name testapp testapp
 ```
