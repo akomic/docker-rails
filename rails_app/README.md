@@ -1,7 +1,7 @@
 rails_app
 =========
 
-Running Docker container with Rails, Unicorn and supervisor
+Running Docker container with Rails and Unicorn
 -----------------------------------------------------------
 
 Application is located on the host and mounted as volume in container.
@@ -37,6 +37,8 @@ To bundle we are going to run separate container
 
 ```
 $ docker run -t -i -P \
+  --env RAILS_ENV="development" \
+  --env SECRET_KEY_BASE="<here_goes_secret_key>" \
   -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle \
   --name testappBundler testapp /bin/bash
 ```
@@ -51,20 +53,15 @@ Running newly created container with unicorn
 
 ```
 $ docker run -d -p 14401:14401 \
+  --env RAILS_ENV="development" \
+  --env SECRET_KEY_BASE="<here_goes_secret_key>" \
   -v /dev/log:/dev/log \
   -v /home/ak/testapp:/home/ak/testapp -v /home/ak/bundle:/home/ak/bundle \
   --name testapp testapp
 ```
 
 ```
-$ docker ps
-CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                      NAMES
-aab27e60aa60        testapp:latest      "supervisord -n -c s   49 seconds ago      Up 48 seconds       0.0.0.0:14401->14401/tcp   testapp
-```
-
-```
 $ docker logs testapp
-2014-11-17 16:06:40,212 INFO supervisord started with pid 1
 2014-11-17 16:06:41,216 INFO spawned: 'railsapp' with pid 9
 2014-11-17 16:06:43,004 INFO success: railsapp entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 ```
